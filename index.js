@@ -6,6 +6,11 @@
 const exampleMovies = require('./movies')
 // Do not change the line above.
 
+const capitalize = str => {
+  str = str.toLowerCase()
+  str = str.replace(str[0], str[0].toUpperCase())
+  return str
+}
 /**
  * getAllMovieTitles()
  * -----------------------------
@@ -98,7 +103,6 @@ function countByRating(movies) {
     }
   }
   return rates
-
 }
 
 /**
@@ -116,7 +120,12 @@ function countByRating(movies) {
     };
  */
 function findById(movies, id) {
-
+  for (let i = 0; i < movies.length; i++) {
+    if (movies[i].imdbID === id) {
+      return movies[i]
+    }
+  }
+  return null
 }
 
 /**
@@ -140,7 +149,17 @@ function findById(movies, id) {
  *  //> []
  */
 function filterByGenre(movies, genre) {
-
+  const genreMovies = []
+  let genreNew = capitalize(genre)
+  for (let i = 0; i < movies.length; i++) {
+    let gen = movies[i].genre.split(', ')
+    for (let j = 0; j < gen.length; j++) {
+      if (gen[j] === genreNew) {
+        genreMovies.push(movies[i])
+      }
+    }
+  }
+  return genreMovies
 }
 
 /**
