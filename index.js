@@ -3,7 +3,7 @@
 
   Keep in mind that your functions must still have and use a parameter for accepting all movies.
 */
-const exampleMovies = require("./movies");
+const exampleMovies = require('./movies')
 // Do not change the line above.
 
 /**
@@ -28,7 +28,13 @@ const exampleMovies = require("./movies");
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles() {}
+function getAllMovieTitles(movies) {
+  const titles = []
+  for (let i = 0; i < movies.length; i++) {
+    titles.push(movies[i].title)
+  }
+  return titles
+}
 
 /**
  * getHighestMetascore()
@@ -41,7 +47,15 @@ function getAllMovieTitles() {}
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+function getHighestMetascore(movies) {
+  let highest = 0
+  for (let i = 0; i < movies.length; i++) {
+    if (movies[i].metascore > highest) {
+      highest = movies[i].metascore
+    }
+  }
+  return ~~highest
+}
 
 /**
  * getAverageIMDBRating()
@@ -54,7 +68,9 @@ function getHighestMetascore() {}
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+function getAverageIMDBRating(movies) {
+ 
+}
 
 /**
  * countByRating()
@@ -67,7 +83,9 @@ function getAverageIMDBRating() {}
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {
+  
+}
 
 /**
  * findById()
@@ -83,7 +101,9 @@ function countByRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies, id) {
+
+}
 
 /**
  * filterByGenre()
@@ -105,7 +125,9 @@ function findById() {}
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies, genre) {
+
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -154,4 +176,4 @@ module.exports = {
   filterByGenre,
   getAllMoviesReleasedAtOrBeforeYear,
   getBiggestBoxOfficeMovie,
-};
+}
