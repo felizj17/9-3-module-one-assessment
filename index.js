@@ -184,7 +184,16 @@ function filterByGenre(movies, genre) {
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+  const moviesYear = []
+  for (let i = 0; i < movies.length; i++) {
+    let yr = movies[i].released.split(' ')[2]
+    if (yr <= year) {
+      moviesYear.push(movies[i])
+    }
+  }
+  return moviesYear
+}
 
 /**
  * getBiggestBoxOfficeMovie()
@@ -197,7 +206,22 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {
+  let highestBox = 0
+  let highestTitle = ''
+  if (movies.length === 0) {
+    return null
+  }
+  for (let i = 0; i < movies.length; i++) {
+    let box = movies[i].boxOffice.replace('$', '')
+    box = box.split(',').join('')
+    if (+box > highestBox) {
+      highestBox = +box
+      highestTitle = movies[i].title
+    }
+  }
+  return highestTitle
+}
 
 // Do not change anything below this line.
 module.exports = {
